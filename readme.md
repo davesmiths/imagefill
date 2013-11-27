@@ -68,7 +68,7 @@ $(function() {
 Advanced Options
 ----------------
 
-###Delay
+###delay
 Change the window.resize event throttle from the default 200 ms to a setting of your choosing:
 ```
 $(function() {
