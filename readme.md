@@ -52,7 +52,7 @@ halign:
 * golden - aligns the first golden intersection at 0.6180... with the same point on the wrapper
 * second-golden - aligns the second golden intersection at 0.3819... with the same point on the wrapper
 
-Options are applied in two ways
+Apply options in two ways
 
 Markup:
 ```
@@ -63,6 +63,18 @@ JavaScript:
 ```
 $(function() {
     $('.imagefill').imagefill({valign:'top', halign:'left'});
+});
+```
+
+Advanced Options
+----------------
+
+Delay: Change the window.resize event throttle from the default 200 ms to a setting of your choosing
+
+Change the delay via JavaScript as follows:
+```
+$(function() {
+    $('.imagefill').imagefill({delay: 100});
 });
 ```
 
