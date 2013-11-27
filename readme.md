@@ -16,9 +16,7 @@ Usage
     <img src="path/to/image.jpg" alt="" />
 </div>
 ```
-or
-
-forget the div and add the imagefill class to the image - a wrapper div (div.imagefill-wrapper) is dynamically added
+or forget the div and add the imagefill class to the image - a wrapper div (div.imagefill-wrapper) is dynamically added
 ```
 <img class="imagefill" src="path/to/image.jpg" alt="" />
 ```
