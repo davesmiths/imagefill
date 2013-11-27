@@ -13,10 +13,12 @@ Usage
 1. Wrap your image in an imagefill div
 ```
 <div class="imagefill">
-<img src="path/to/image.jpg" alt="" />
+    <img src="path/to/image.jpg" alt="" />
 </div>
 ```
-or alternatively forget the div and add the imagefill class to the image - the wrapper div is dynamically added
+or
+
+forget the div and add the imagefill class to the image - a wrapper div (div.imagefill-wrapper) is dynamically added
 ```
 <img class="imagefill" src="path/to/image.jpg" alt="" />
 ```
