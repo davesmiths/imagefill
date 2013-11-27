@@ -1,3 +1,4 @@
+
 // imagefill v1.0.0
 // A jQuery plugin to help manage images in responsive layouts
 // Images fill the available horizontal space and crop appropriately through assignable presets
@@ -19,7 +20,10 @@
 	// The main function
 	run = function() {
 		
-		var $image = $(this)
+		var $this = $(this)
+			,$imagefill
+			,isImage = false
+			,$image
 			,horizontalPreset
 			,verticalPreset
 			,wrapperHeight
@@ -38,33 +42,43 @@
 			,imagefillDataHalign= 'imagefill-halign'
 			,imagefillDataValign = 'imagefill-valign'
 		;
-					
-		horizontalPreset = $image.data(imagefillDataHalign) || 'third';
-		verticalPreset = $image.data(imagefillDataValign) || 'third';
 		
-		// Wrap image if necessary
-		if ($image.parent().is('.' + imagefillWrapperClass) === false) {
-			$image.wrap('<div class="' + imagefillWrapperClass + '"></div>');
+		// If this is an image
+		if ($this.is('img')) {
+			isImage = true;
+			$imagefill = $image = $this;
+			// Wrap image if necessary
+			if ($image.parent().is('.' + imagefillWrapperClass) === false) {
+				$image.wrap('<div class="' + imagefillWrapperClass + '"></div>');
+			}
+			$wrapper = $image.parent();
 		}
+		// Else this is a wrapping element
+		else {
+			$imagefill = $wrapper = $this;
+			$image = $wrapper.find('img').eq(0);
+		}
+					
+		horizontalPreset = $imagefill.data(imagefillDataHalign) || 'third';
+		verticalPreset = $imagefill.data(imagefillDataValign) || 'third';
 		
-		if (!$image.data(imagefillDataName)) {
-			$image.data(imagefillDataName, {
-				width: $image.width()
-				,height: $image.height()
+		
+		if (!$imagefill.data(imagefillDataName)) {
+			$imagefill.data(imagefillDataName, {
+				width: $imagefill.width()
+				,height: $imagefill.height()
 			});
 		}
 		
-		origWidth = $image.data(imagefillDataName).width;
-		origHeight = $image.data(imagefillDataName).height;
+		origWidth = $imagefill.data(imagefillDataName).width;
+		origHeight = $imagefill.data(imagefillDataName).height;
 		
 		$image.css({
 			display: 'block'
 			,position: 'static'
-			,width: origWidth + 'px'
+			,width: 'auto'
 			,height: origHeight + 'px'
 		});
-		
-		$wrapper = $image.parent();
 		
 		$wrapper.css({
 			overflow:'hidden'
@@ -90,6 +104,8 @@
 			width = 'auto';
 			height = '100%';
 		}
+		
+		
 		$image.css({
 			width: width
 			,height: height
@@ -99,13 +115,18 @@
 		});
 		// Decided that by default the original height of the image is used to crop the image no matter the width
 		
+		wrapperHeight = $wrapper.height();
+		wrapperWidth = $wrapper.width();
+		imageHeight = $image.height();
+		imageWidth = $image.width();
+		
 		// Default to valign third and halign third
 		css = {
 			position: 'absolute'
-			,top: -1 * $image.height() / 3 + 'px'
-			,marginTop: $wrapper.height() / 3 + 'px'
-			,left: -1 * $image.width() / 3 + 'px'
-			,marginLeft: $wrapper.width() / 3 + 'px'
+			,top: -1 * imageHeight / 3 + 'px'
+			,marginTop: wrapperHeight / 3 + 'px'
+			,left: -1 * imageWidth / 3 + 'px'
+			,marginLeft: wrapperWidth / 3 + 'px'
 			,bottom: 'auto'
 			,right: 'auto'
 			,marginRight: 'auto'
@@ -115,26 +136,26 @@
 		// Horizontal Presets
 		if (horizontalPreset == 'third') {
 			if (ratio === false) {
-				css.left = -1 * $image.width() / 3 + 'px';
-				css.marginLeft = 1 * $wrapper.width() / 3 + 'px';
+				css.left = -1 * imageWidth / 3 + 'px';
+				css.marginLeft = 1 * wrapperWidth / 3 + 'px';
 			}
 		}
 		else if (horizontalPreset == 'second-third') {
 			if (ratio === false) {
-				css.left = -2 * $image.width() / 3 + 'px';
-				css.marginLeft = 2 * $wrapper.width() / 3 + 'px';
+				css.left = -2 * imageWidth / 3 + 'px';
+				css.marginLeft = 2 * wrapperWidth / 3 + 'px';
 			}
 		}
 		else if (horizontalPreset == 'golden') {
 			if (ratio === false) {
-				css.left = -1 * goldenRatioInvLeft * $image.width() + 'px';
-				css.marginLeft = goldenRatioInvLeft * $wrapper.width() + 'px';
+				css.left = -1 * goldenRatioInvLeft * imageWidth + 'px';
+				css.marginLeft = goldenRatioInvLeft * wrapperWidth + 'px';
 			}
 		}
 		else if (horizontalPreset == 'second-golden') {
 			if (ratio === false) {
-				css.left = -1 * goldenRatioInv * $image.width() + 'px';
-				css.marginLeft = goldenRatioInv * $wrapper.width() + 'px';
+				css.left = -1 * goldenRatioInv * imageWidth + 'px';
+				css.marginLeft = goldenRatioInv * wrapperWidth + 'px';
 			}
 		}
 		else if (horizontalPreset == 'left') {
@@ -149,34 +170,34 @@
 		}
 		else if (horizontalPreset == 'middle') {
 			if (ratio === false) {
-				css.left = -1 * $image.width() / 2 + 'px';
-				css.marginLeft = 1 * $wrapper.width() / 2 + 'px';
+				css.left = -1 * imageWidth / 2 + 'px';
+				css.marginLeft = 1 * wrapperWidth / 2 + 'px';
 			}
 		}
 		
 		// Vertical Presets
 		if (verticalPreset == 'third') {
 			if (ratio) {
-				css.top = -1 * $image.height() / 3 + 'px';
-				css.marginTop = $wrapper.height() / 3 + 'px';
+				css.top = -1 * imageHeight / 3 + 'px';
+				css.marginTop = wrapperHeight / 3 + 'px';
 			}
 		}
 		else if (verticalPreset == 'second-third') {
 			if (ratio) {
-				css.top = -2 * $image.height() / 3 + 'px';
-				css.marginTop = 2 * $wrapper.height() / 3 + 'px';
+				css.top = -2 * imageHeight / 3 + 'px';
+				css.marginTop = 2 * wrapperHeight / 3 + 'px';
 			}
 		}
 		else if (verticalPreset == 'golden') {
 			if (ratio) {
-				css.top = -1 * goldenRatioInvLeft * $image.height() + 'px';
-				css.marginTop = goldenRatioInvLeft * $wrapper.height() + 'px';
+				css.top = -1 * goldenRatioInvLeft * imageHeight + 'px';
+				css.marginTop = goldenRatioInvLeft * wrapperHeight + 'px';
 			}
 		}
 		else if (verticalPreset == 'second-golden') {
 			if (ratio) {
-				css.top = -1 * goldenRatioInv * $image.height() + 'px';
-				css.marginTop = goldenRatioInv * $wrapper.height() + 'px';
+				css.top = -1 * goldenRatioInv * imageHeight + 'px';
+				css.marginTop = goldenRatioInv * wrapperHeight + 'px';
 			}
 		}
 		else if (verticalPreset == 'top') {
@@ -191,8 +212,8 @@
 		}
 		else if (verticalPreset == 'middle') {
 			if (ratio) {
-				css.top = -1 * $image.height() / 2 + 'px';
-				css.marginTop = $wrapper.height() / 2 + 'px';
+				css.top = -1 * imageHeight / 2 + 'px';
+				css.marginTop = wrapperHeight / 2 + 'px';
 			}
 		}
 		
