@@ -1,9 +1,4 @@
-
-// imagefill v1.0.0
-// A jQuery plugin to help manage images in responsive layouts
-// Images fill the available horizontal space and crop appropriately through assignable presets
-// imagefill binds to a window.resize event and updates all images called through imagefill in a regulated and sensible way
-// by Dave Smith 2013 November 26
+/* imagefill v1.0.0 https://github.com/davesmiths/imagefill */
 (function($) {
 	
 	// $collection, to collect all the elements that can passed into imagefill so they can be updated on window.resize efficiently
