@@ -33,7 +33,7 @@ $(function() {
 Options
 -------
 
-valign:
+###valign
 * top
 * middle - aligns the middle of the image with the middle of the wrapper div
 * bottom
@@ -42,7 +42,7 @@ valign:
 * golden - aligns the first golden intersection at 0.6180... with the same point on the wrapper
 * second-golden - aligns the second golden intersection at 0.3819... with the same point on the wrapper
 
-halign:
+###halign
 * left
 * middle - aligns the middle of the image with the middle of the wrapper div
 * right
@@ -68,7 +68,8 @@ $(function() {
 Advanced Options
 ----------------
 
-Delay: Change the window.resize event throttle from the default 200 ms to a setting of your choosing:
+###Delay
+Change the window.resize event throttle from the default 200 ms to a setting of your choosing:
 ```
 $(function() {
     $('.imagefill').imagefill({delay: 100});
