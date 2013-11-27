@@ -69,9 +69,7 @@ $(function() {
 Advanced Options
 ----------------
 
-Delay: Change the window.resize event throttle from the default 200 ms to a setting of your choosing
-
-Change the delay via JavaScript as follows:
+Delay: Change the window.resize event throttle from the default 200 ms to a setting of your choosing:
 ```
 $(function() {
     $('.imagefill').imagefill({delay: 100});
