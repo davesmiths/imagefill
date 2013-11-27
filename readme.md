@@ -51,8 +51,8 @@ Options
 * golden - aligns the first golden intersection at 0.6180... with the same point on the wrapper
 * second-golden - aligns the second golden intersection at 0.3819... with the same point on the wrapper
 
-###Apply option
-There are two ways to apply options: Markup and JavaScript. Markup options will override JavaScript options
+###Option usage
+Apply options via markup or JavaScript. If both are applied markup will override JavaScript options
 
 Markup:
 ```
