@@ -3,9 +3,9 @@ imagefill
 
 **A jQuery plugin to help manage images in responsive layouts**
 
-Images fill the available horizontal space and crop appropriately through assignable presets
+Images fill the available horizontal space and crop appropriately through assignable presets.
 
-The window.resize event is bound to and updates all images called through imagefill in a regulated and sensible way
+The window.resize event updates all images run through imagefill in a regulated and sensible way.
 
 Usage
 -----
