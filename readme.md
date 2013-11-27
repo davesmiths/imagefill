@@ -75,9 +75,9 @@ $(function() {
 });
 ```
 
-div.imagefill or img.imagefill
+div or img.imagefill
 ------------------------------
 
 When writing imagefill I imagined there might be the odd occasion when a dynamically added div could cause a 
-headache for someone when styling because it isn't explicitly in the markup. So the choice is there, and both work.
+headache for someone when styling because it isn't explicitly in the markup. So the choice is there and both work.
 
