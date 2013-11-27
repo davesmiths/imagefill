@@ -10,21 +10,20 @@ The window.resize event updates all images run through imagefill in a regulated 
 Usage
 -----
 
-1. Wrap your image in an imagefill div
+1. Wrap your image in an imagefill div:
 ```
 <div class="imagefill">
     <img src="path/to/image.jpg" alt="" />
 </div>
 ```
-or forget the div and add the imagefill class to the image - a wrapper div (div.imagefill-wrapper) is dynamically added
+or add the imagefill class to the image directly - note a wrapper div is dynamically added (div.imagefill-wrapper):
 ```
 <img class="imagefill" src="path/to/image.jpg" alt="" />
 ```
 
+2. Make sure the page loads the plugin
 
-2. Make sure the page is loading the plugin
-
-3. Run imagefill, 
+3. Run imagefill:
 ```
 $(function() {
     $('.imagefill').imagefill();
@@ -75,4 +74,10 @@ $(function() {
     $('.imagefill').imagefill({delay: 100});
 });
 ```
+
+div.imagefill or img.imagefill
+------------------------------
+
+When writing imagefill I imagined there might be the odd occasion when a dynamically added div could cause a 
+headache for someone when styling because it isn't explicitly in the markup. So the choice is there, and both work.
 
