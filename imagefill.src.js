@@ -1,4 +1,4 @@
-/* imagefill v1.0.0 https://github.com/davesmiths/imagefill */
+/* imagefill v1.0.1 https://github.com/davesmiths/imagefill */
 (function($) {
 	
 	// $collection, to collect all the elements that can passed into imagefill so they can be updated on window.resize efficiently
@@ -233,8 +233,12 @@
 		this.each(function() {
 			$collection = $collection.add(this);
 		});
-		
-		return this.each(run);
+
+		return this.each(function() {
+			$(this).on('load', run);
+			// There may be caveats
+			// http://stackoverflow.com/questions/10403983/cross-browser-image-onload-event-handling
+		});
 		
 	};
 	
@@ -242,7 +246,6 @@
 	runBuffer = function() {
 		clearTimeout(tid);
 		tid = setTimeout(function() {
-			console.log($collection.length);
 			$collection.each(run);
 		}, delay);
 	};
