@@ -7,6 +7,8 @@ Images fill the available horizontal space and crop appropriately through assign
 
 The window.resize event updates all images run through imagefill in a regulated and sensible way.
 
+Created 2013 November 26
+
 Usage
 -----
 
