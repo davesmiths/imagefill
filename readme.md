@@ -1,7 +1,7 @@
 imagefill
 =========
 
-**A jQuery plugin to help maintain artistic direction over images in responsive layouts**  
+**A jQuery plugin to get a bit of artistic direction over images in responsive layouts**  
 Created 2013 November 26
 
 Usage
