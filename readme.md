@@ -1,39 +1,46 @@
 imagefill
 =========
 
-**A jQuery plugin to help manage images in responsive layouts**
-
-Images fill the available horizontal space and crop appropriately through assignable presets.
-
-The window.resize event updates all images run through imagefill in a regulated and sensible way.
-
+**A jQuery plugin to help maintain artistic direction over images in responsive layouts**  
 Created 2013 November 26
 
 Usage
 -----
-
-1. Wrap your image in an imagefill div:
-```
-<div class="imagefill">
-    <img src="path/to/image.jpg" alt="" />
-</div>
-```
-or add the imagefill class to the image directly - note a wrapper div is dynamically added (div.imagefill-wrapper):
+Add a class to an image:
 ```
 <img class="imagefill" src="path/to/image.jpg" alt="" />
 ```
+Load jQuery and the plugin in some way, for example:
+```
+<script src="pathto/jquery.js"></script>
+<script src="pathto/imagefill.js"></script>
+```
 
-2. Make sure the page loads the plugin
-
-3. Run imagefill:
+Do the business:
 ```
 $(function() {
     $('.imagefill').imagefill();
 });
 ```
+Play with some options
 
 Options
 -------
+
+Options are applied via the markup with data attributes or JavaScript.  
+*Markup wins if options are applied in JavaScript and markup*
+
+Markup:
+```
+<img class="imagefill" data-imagefill-valign="golden" src="" alt="" />
+```
+
+JavaScript:
+```
+$(function() {
+    $('.imagefill').imagefill({valign:'top', halign:'left'});
+});
+```
 
 ###valign
 * top
@@ -53,25 +60,20 @@ Options
 * golden - aligns the first golden intersection at 0.6180... with the same point on the wrapper
 * second-golden - aligns the second golden intersection at 0.3819... with the same point on the wrapper
 
-###Using options
-Apply options via markup or JavaScript. If both are applied markup will override JavaScript options
 
-Markup:
-```
-<div class="imagefill" data-imagefill-valign="golden">
-```
+How it works
+------------
+Imagefill makes an image fill the available horizontal space and crops appropriately through assignable presets.
 
-JavaScript:
-```
-$(function() {
-    $('.imagefill').imagefill({valign:'top', halign:'left'});
-});
-```
+It does this by making sure there is a wrapper div around the image. The wrapper div makes it possible to apply styles that position and crop the image.
 
-Advanced Options
-----------------
+A window.resize event is handled that updates all imagefill images in a regulated and sensible way.
 
-###delay
+
+Advanced
+--------
+
+###Delay option
 Change the window.resize event throttle from the default 200 ms to a setting of your choosing:
 ```
 $(function() {
@@ -79,3 +81,10 @@ $(function() {
 });
 ```
 
+###Alternate markup
+If you need full control and want to wrap the image in your own div then this is possible too:
+```
+<div class="imagefill">
+    <img src="path/to/image.jpg" alt="" />
+</div>
+```
