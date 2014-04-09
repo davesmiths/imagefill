@@ -65,7 +65,7 @@ How it works
 ------------
 Imagefill makes an image fill the available horizontal space and crops appropriately through assignable presets.
 
-It does this by making sure there is a wrapper div around the image. The wrapper div makes it possible to apply styles that position and crop the image.
+It does this by making sure there is a wrapper div around the image. The wrapper div makes it possible for imagefill to apply styles that position and crop the image.
 
 A window.resize event is handled that updates all imagefill images in a regulated and sensible way.
 
