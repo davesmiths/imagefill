@@ -110,7 +110,7 @@
 				css.left = widthDifference / 3 + 'px';
 			}
 		}
-		else if (horizontalPreset == 'second-third') {
+		else if (horizontalPreset == 'second-third' || horizontalPreset == '-third') {
 			if (ratio === false) {
 				css.left = widthDifference * 2 / 3 + 'px';
 			}
@@ -120,7 +120,7 @@
 				css.left = widthDifference * goldenRatioInvLeft + 'px';
 			}
 		}
-		else if (horizontalPreset == 'second-golden') {
+		else if (horizontalPreset == 'second-golden' || horizontalPreset == '-golden') {
 			if (ratio === false) {
 				css.left = widthDifference * goldenRatioInv + 'px';
 			}
@@ -156,7 +156,7 @@
 				css.top = heightDifference / 3 + 'px';
 			}
 		}
-		else if (verticalPreset == 'second-third') {
+		else if (verticalPreset == 'second-third' || verticalPreset == '-third') {
 			if (ratio) {
 				css.top = heightDifference * 2 / 3 + 'px';
 			}
@@ -166,7 +166,7 @@
 				css.top = heightDifference * goldenRatioInvLeft + 'px';
 			}
 		}
-		else if (verticalPreset == 'second-golden') {
+		else if (verticalPreset == 'second-golden' || verticalPreset == '-golden') {
 			if (ratio) {
 				css.top = heightDifference * goldenRatioInv + 'px';
 			}
