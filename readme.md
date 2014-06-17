@@ -8,7 +8,7 @@ Usage
 -----
 Add a class to an image:
 ```
-<img class="imagefill" src="path/to/image.jpg" alt="" />
+<img class="imagefill" src="path/to/image.jpg" width="400" height="200" alt="" />
 ```
 Load jQuery and the plugin in some way, for example:
 ```
@@ -38,7 +38,7 @@ Markup:
 JavaScript:
 ```
 $(function() {
-    $('.imagefill').imagefill();    
+    $('.imagefill').imagefill({align:'center/33'});    
 });
 ```
 
