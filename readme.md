@@ -78,11 +78,17 @@ Advanced
 --------
 
     
-###Apply options via JavaScript
-These will override any set with data attributes
+###Custom class option
+The wrapper div gets both the standard class of imagefill-wrapper and the custom class given
+
+Markup
 ```
-$('.imagefill').imagefill({valign:'top', halign:'left'});
-$('.imagefill').imagefill({align:'0/70'}); // equivalent to {halign:'left',valign:'70'}
+<img class="imagefill" data-imagefill-class="wop" src="" width="400" height="200" alt="" />
+```
+
+JavaScript
+```
+$('.imagefill').imagefill({className:'wop'});
 ```
 
 ###Delay option
