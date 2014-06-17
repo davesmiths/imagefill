@@ -77,6 +77,16 @@ A window.resize event is handled that updates all imagefill images in a regulate
 Advanced
 --------
 
+###Get a bit responsive and control the image height with media queries
+CSS
+```
+.imagefill-wrapper {min-height:200px;}
+@media all and (min-width:700px) {
+    .imagefill-wrapper {min-height:400px;}
+}
+```
+
+
     
 ###Custom class option
 The wrapper div gets both the standard class of imagefill-wrapper and the custom class given
