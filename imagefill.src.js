@@ -1,5 +1,7 @@
-/* imagefill v1.0.1 https://github.com/davesmiths/imagefill */
+/* imagefill v2.0.0 https://github.com/davesmiths/imagefill */
 (function($) {
+	
+	'use strict';
 	
 	// $collection, to collect all the elements that can passed into imagefill so they can be updated on window.resize efficiently
 	var $collection = $()
@@ -11,6 +13,10 @@
 		,tid
 		
 		,imagefillDataName = 'imagefill'
+		
+		,run
+		,runonce
+		,runBuffer
 		
 	;
 	
@@ -30,13 +36,16 @@
 			,widthDifference
 			,wrapperRatio
 			,imageRatio
-			,origHeight
+			,ratio
+			,width
+			,height
+			,css
 			,$wrapper
 			,goldenRatioInv = 0.61803398874985
 			,goldenRatioInvLeft = 0.38196601125015
-			,imagefillDataHalign= 'imagefill-halign'
-			,imagefillDataValign = 'imagefill-valign'
-			,imagefillDataAlign = 'imagefill-align'
+			,imagefillDataHalign= imagefillDataName + '-halign'
+			,imagefillDataValign = imagefillDataName + '-valign'
+			,imagefillDataAlign = imagefillDataName + '-align'
 		;
 		
 		$wrapper = $this.parent();
@@ -105,34 +114,34 @@
 			    }
 			}
 		}
-		else if (horizontalPreset == 'third') {
+		else if (horizontalPreset === 'third') {
 			if (ratio === false) {
 				css.left = widthDifference / 3 + 'px';
 			}
 		}
-		else if (horizontalPreset == 'second-third' || horizontalPreset == '-third') {
+		else if (horizontalPreset === 'second-third' || horizontalPreset === '-third') {
 			if (ratio === false) {
 				css.left = widthDifference * 2 / 3 + 'px';
 			}
 		}
-		else if (horizontalPreset == 'golden') {
+		else if (horizontalPreset === 'golden') {
 			if (ratio === false) {
 				css.left = widthDifference * goldenRatioInvLeft + 'px';
 			}
 		}
-		else if (horizontalPreset == 'second-golden' || horizontalPreset == '-golden') {
+		else if (horizontalPreset === 'second-golden' || horizontalPreset === '-golden') {
 			if (ratio === false) {
 				css.left = widthDifference * goldenRatioInv + 'px';
 			}
 		}
-		else if (horizontalPreset == 'left') {
+		else if (horizontalPreset === 'left') {
 			css.left = 0;
 		}
-		else if (horizontalPreset == 'right') {
+		else if (horizontalPreset === 'right') {
 			css.left = 'auto';
 			css.right = 0;
 		}
-		else if (horizontalPreset == 'middle' || horizontalPreset == 'center') {
+		else if (horizontalPreset === 'middle' || horizontalPreset === 'center') {
 			if (ratio === false) {
 				css.left = widthDifference / 2 + 'px';
 			}
@@ -151,34 +160,34 @@
 			    }
 			}
 		}
-		else if (verticalPreset == 'third') {
+		else if (verticalPreset === 'third') {
 			if (ratio) {
 				css.top = heightDifference / 3 + 'px';
 			}
 		}
-		else if (verticalPreset == 'second-third' || verticalPreset == '-third') {
+		else if (verticalPreset === 'second-third' || verticalPreset === '-third') {
 			if (ratio) {
 				css.top = heightDifference * 2 / 3 + 'px';
 			}
 		}
-		else if (verticalPreset == 'golden') {
+		else if (verticalPreset === 'golden') {
 			if (ratio) {
 				css.top = heightDifference * goldenRatioInvLeft + 'px';
 			}
 		}
-		else if (verticalPreset == 'second-golden' || verticalPreset == '-golden') {
+		else if (verticalPreset === 'second-golden' || verticalPreset === '-golden') {
 			if (ratio) {
 				css.top = heightDifference * goldenRatioInv + 'px';
 			}
 		}
-		else if (verticalPreset == 'top') {
+		else if (verticalPreset === 'top') {
 			css.top = 0;
 		}
-		else if (verticalPreset == 'bottom') {
+		else if (verticalPreset === 'bottom') {
 			css.top = 'auto';
 			css.bottom = 0;
 		}
-		else if (verticalPreset == 'middle' || verticalPreset == 'center') {
+		else if (verticalPreset === 'middle' || verticalPreset === 'center') {
 			if (ratio) {
 				css.top = heightDifference / 2 + 'px';
 			}
@@ -250,9 +259,10 @@
 		});
 
 		return this.each(function() {
-			var $this = $(this)
-				,width = $this.attr('width')
-				,height = $this.attr('height')
+		
+			var $img = $(this)
+				,width = $img.attr('width')
+				,height = $img.attr('height')
 			;
 			
 			// Optimised to call run when the width and height attributes are set, rather than wait for the image to load
@@ -262,8 +272,8 @@
 				});
 			}
 			else {
-				$this.data('imagefill-image-width', width);
-				$this.data('imagefill-image-height', height);
+				$img.data('imagefill-image-width', width);
+				$img.data('imagefill-image-height', height);
 				runonce.call(this);
 			}
 			// There may be caveats
