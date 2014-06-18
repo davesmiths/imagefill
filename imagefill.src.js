@@ -107,96 +107,85 @@
 			,marginBottom: 'auto'
 		};
 		
-		// Horizontal Presets
-		if ($.isNumeric(horizontalPreset)) {
-    		horizontalPreset = horizontalPreset * 1;
-			if (ratio === false && 0 <= horizontalPreset && horizontalPreset <= 100) {
-			    if (horizontalPreset === 100) {
-        			css.left = 'auto';
-        			css.right = 0;
-			    }
-			    else {
-    				css.left = widthDifference * horizontalPreset / 100 + 'px';
-			    }
+			
+		// Vertical Presets
+		if (ratio) {
+			
+			if ($.isNumeric(verticalPreset)) {
+				verticalPreset = verticalPreset / 100;
 			}
-		}
-		else if (horizontalPreset === 'third') {
-			if (ratio === false) {
-				css.left = widthDifference / 3 + 'px';
+			else if (verticalPreset === 'third') {
+				verticalPreset = 1/3;
 			}
-		}
-		else if (horizontalPreset === 'second-third' || horizontalPreset === '-third') {
-			if (ratio === false) {
-				css.left = widthDifference * 2 / 3 + 'px';
+			else if (verticalPreset === '-third') {
+				verticalPreset = 2/3;
 			}
-		}
-		else if (horizontalPreset === 'golden') {
-			if (ratio === false) {
-				css.left = widthDifference * goldenRatioInvLeft + 'px';
+			else if (verticalPreset === 'golden') {
+				verticalPreset = goldenRatioInvLeft;
 			}
-		}
-		else if (horizontalPreset === 'second-golden' || horizontalPreset === '-golden') {
-			if (ratio === false) {
-				css.left = widthDifference * goldenRatioInv + 'px';
+			else if (verticalPreset === '-golden') {
+				verticalPreset = goldenRatioInv;
 			}
-		}
-		else if (horizontalPreset === 'left') {
-			css.left = 0;
-		}
-		else if (horizontalPreset === 'right') {
-			css.left = 'auto';
-			css.right = 0;
-		}
-		else if (horizontalPreset === 'middle' || horizontalPreset === 'center') {
-			if (ratio === false) {
-				css.left = widthDifference / 2 + 'px';
+			else if (verticalPreset === 'top') {
+				verticalPreset = 0;
 			}
+			else if (verticalPreset === 'bottom') {
+				verticalPreset = 1;
+			}
+			else if (verticalPreset === 'middle' || verticalPreset === 'center') {
+				verticalPreset = 0.5;
+			}
+			
+			if (0 <= verticalPreset && verticalPreset <= 1) {
+				if (verticalPreset === 1) {
+					css.top = 'auto';
+					css.bottom = 0;
+				}
+				else {
+					css.top = heightDifference * verticalPreset + 'px';
+				}
+			}
+			
 		}
 		
-		// Vertical Presets
-		if ($.isNumeric(verticalPreset)) {
-		    verticalPreset = verticalPreset * 1;
-			if (ratio && 0 <= verticalPreset && verticalPreset <= 100) {
-			    if (verticalPreset === 100) {
-    				css.top = 'auto';
-    				css.bottom = 0;
-			    }
-			    else {
-    				css.top = heightDifference * verticalPreset / 100 + 'px';
-			    }
+		// Horizontal Presets
+		else {
+			
+			if ($.isNumeric(horizontalPreset)) {
+				horizontalPreset = horizontalPreset / 100;
 			}
-		}
-		else if (verticalPreset === 'third') {
-			if (ratio) {
-				css.top = heightDifference / 3 + 'px';
+			else if (horizontalPreset === 'third') {
+				horizontalPreset = 1/3;
 			}
-		}
-		else if (verticalPreset === '-third') {
-			if (ratio) {
-				css.top = heightDifference * 2 / 3 + 'px';
+			else if (horizontalPreset === '-third') {
+				horizontalPreset = 2/3;
 			}
-		}
-		else if (verticalPreset === 'golden') {
-			if (ratio) {
-				css.top = heightDifference * goldenRatioInvLeft + 'px';
+			else if (horizontalPreset === 'golden') {
+				horizontalPreset = goldenRatioInvLeft;
 			}
-		}
-		else if (verticalPreset === '-golden') {
-			if (ratio) {
-				css.top = heightDifference * goldenRatioInv + 'px';
+			else if (horizontalPreset === '-golden') {
+				horizontalPreset = goldenRatioInv;
 			}
-		}
-		else if (verticalPreset === 'top') {
-			css.top = 0;
-		}
-		else if (verticalPreset === 'bottom') {
-			css.top = 'auto';
-			css.bottom = 0;
-		}
-		else if (verticalPreset === 'middle' || verticalPreset === 'center') {
-			if (ratio) {
-				css.top = heightDifference / 2 + 'px';
+			else if (horizontalPreset === 'left') {
+				horizontalPreset = 0;
 			}
+			else if (horizontalPreset === 'right') {
+				horizontalPreset = 1;
+			}
+			else if (horizontalPreset === 'middle' || horizontalPreset === 'center') {
+				horizontalPreset = 0.5;
+			}
+			
+			if (0 <= horizontalPreset && horizontalPreset <= 1) {
+				if (horizontalPreset === 1) {
+					css.left = 'auto';
+					css.right = 0;
+				}
+				else {
+					css.left = widthDifference * horizontalPreset + 'px';
+				}
+			}
+			
 		}
 		
 		$image.css(css);
