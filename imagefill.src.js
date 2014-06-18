@@ -62,21 +62,25 @@
 		
 		wrapperHeight = $wrapper.height() * 1;
 		wrapperWidth = $wrapper.width() * 1;
-		imageHeight = $image.data('imagefill-image-height') * 1;
-		imageWidth = $image.data('imagefill-image-width') * 1;
 		
 		wrapperRatio = wrapperWidth / wrapperHeight;
-		imageRatio = imageWidth / imageHeight;
+		imageRatio = $image.data('imagefill-image-ratio');
+
+//console.log('imageHeight:',imageHeight, 'imageWidth:', imageWidth);
 
 		if (wrapperRatio > imageRatio) {
 			ratio = true;
 			width = '100%';
 			height = 'auto';
+			imageWidth = wrapperWidth;
+			imageHeight = wrapperWidth / imageRatio;
 		}
 		else {
 			ratio = false;
 			width = 'auto';
 			height = '100%';
+			imageWidth = wrapperHeight * imageRatio;
+			imageHeight = wrapperHeight;
 		}
 		
 		$image.css({
@@ -84,11 +88,13 @@
 			,height: height
 		});
 		
-		imageHeight = $image.height() * 1;
-		imageWidth = $image.width() * 1;
-		
 		heightDifference = wrapperHeight - imageHeight;
 		widthDifference = wrapperWidth - imageWidth;
+
+//console.log('valign:',verticalPreset, 'halign:', horizontalPreset);
+//console.log('wrapperHeight:',wrapperHeight, 'wrapperWidth:', wrapperWidth);
+//console.log('imageHeight:',imageHeight, 'imageWidth:', imageWidth);
+//console.log('wrapperRatio > imageRatio', wrapperRatio > imageRatio);
 		
 		// Default to valign third and halign third
 		css = {
@@ -218,20 +224,19 @@
 		});
 		
 		// Get the image width and height
-		if ($this.data('imagefill-image-width') === undefined) {
+		if ($this.data('imagefill-image-ratio') === undefined) {
 			$this.css({
 				display: 'block'
 				,position: 'static'
 			});
-			$this.data('imagefill-image-width', $this.width());
-			$this.data('imagefill-image-height', $this.height());
+			$this.data('imagefill-image-ratio', $this.width() / $this.height());
 		}
 		// Make position absolute in order to not upset the first wrapper width and height call in run()
 		$this.css({position:'absolute'});
 		
-		// If the wrapper has no height use the height of the image
+		// If the wrapper has no (min-)height use the height of the image
 		if ($wrapper.height() === 0) {
-    		$wrapper.css('minHeight', $this.data('imagefill-image-height'));
+    		$wrapper.css('minHeight', $this.height() + 'px');
 		}
 		
 		run.call(this);
