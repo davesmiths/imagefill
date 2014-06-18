@@ -165,7 +165,7 @@
 				css.top = heightDifference / 3 + 'px';
 			}
 		}
-		else if (verticalPreset === 'second-third' || verticalPreset === '-third') {
+		else if (verticalPreset === '-third') {
 			if (ratio) {
 				css.top = heightDifference * 2 / 3 + 'px';
 			}
@@ -175,7 +175,7 @@
 				css.top = heightDifference * goldenRatioInvLeft + 'px';
 			}
 		}
-		else if (verticalPreset === 'second-golden' || verticalPreset === '-golden') {
+		else if (verticalPreset === '-golden') {
 			if (ratio) {
 				css.top = heightDifference * goldenRatioInv + 'px';
 			}
