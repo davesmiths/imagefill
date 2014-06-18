@@ -1,7 +1,7 @@
 imagefill
 =========
 
-**jQuery plugin to get images to fill the space and crop with artistic direction in responsive layouts**  
+**Artistic direction for images - A jQuery plugin to make images fill the space and crop with artistic direction in responsive layouts**  
 Created 2013 November 26
 
 Usage
@@ -38,7 +38,7 @@ Markup:
 JavaScript:
 ```
 $(function() {
-    $('.imagefill').imagefill({align:'center/33'});    
+    $('.imagefill').imagefill({align:'third/50'});    
 });
 ```
 
@@ -47,9 +47,9 @@ $(function() {
 * middle or center (default) - aligns the middle of the image with the middle of the wrapper div
 * bottom
 * third - aligns the first third of the image with the first third of the wrapper div
-* second-third - aligns the second third of the image with the second third of the wrapper div
+* -third - aligns the second third of the image with the second third of the wrapper div
 * golden - aligns the first golden intersection at 0.6180... with the same point on the wrapper
-* second-golden - aligns the second golden intersection at 0.3819... with the same point on the wrapper
+* -golden - aligns the reverse golden intersection at 0.3819... with the same point on the wrapper
 * 0-100 - a percentage where 0 is equivalent to top and 100 is bottom
 
 ###halign
@@ -57,9 +57,9 @@ $(function() {
 * middle or center (default) - aligns the middle of the image with the middle of the wrapper div
 * right
 * third - aligns the first third of the image with the first third of the wrapper div
-* second-third or -third - aligns the second third of the image with the second third of the wrapper div
+* -third - aligns the second third of the image with the second third of the wrapper div
 * golden - aligns the first golden intersection at 0.6180... with the same point on the wrapper
-* second-golden or -golden - aligns the second golden intersection at 0.3819... with the same point on the wrapper
+* -golden - aligns the reverse golden intersection at 0.3819... with the same point on the wrapper
 * 0-100 - a percentage where 0 is equivalent to left and 100 is right
 
 ###align
