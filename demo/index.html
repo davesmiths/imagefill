@@ -3,7 +3,7 @@
     <head>
         <title>Imagefill Demo</title>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="../imagefill.src.js"></script>
         <script>
             $(function() {
@@ -14,22 +14,22 @@
         </script>
         <style type="text/css">
             
-            body {margin:60px;font-size:20px;line-height:1.5;}
+            body {margin:60px;font-size:20px;line-height:1.5;color:#999;font-family:"Roboto Slab", serif;}
             
-            h1, h2, h3 {font-family:"Roboto Slab", serif;font-weight:700;margin-bottom:10px;}
+            h1, h2, h3 {font-family:"Roboto Slab", serif;font-weight:700;margin-bottom:10px;color:#e200e6;}
             h1 {font-size:2em;margin-bottom:20px;}
-            h1 small {font-size:0.5em;display:block;font-weight:normal;}
+            h1 small {font-size:0.7em;display:block;font-weight:normal;color:#999;}
             h2 {font-size:1.5em;}
-            h2 small {font-size:0.8em;display:block;font-weight:normal;opacity:0.5;}
-            h3 {font-size:1em;font-weight:normal;margin-bottom:9px;}
-            h3 small {font-size:0.8em;display:block;font-weight:normal;opacity:0.5;}
+            h2 small {font-size:0.8em;display:block;font-weight:normal;color:#999;}
+            h3 {font-size:1.25em;font-weight:normal;margin-bottom:9px;}
+            h3 small {font-size:0.9em;display:block;font-weight:normal;color:#999;}
             p {margin-top:0;margin-bottom:30px;}
             
-            .tests .imagefill-wrapper {min-height:100px;}
+            .tests .imagefill-wrapper {min-height:150px;}
             .tests .bob {min-height:400px;}
             
             @media all and (min-width:600px) {
-            	.tests .imagefill-wrapper {min-height:200px;}
+            	.tests .imagefill-wrapper {min-height:300px;}
                 .tests .bob {min-height:400px;}
                 .horizontal {max-width:600px;}
             }
@@ -39,66 +39,70 @@
     <body>
         
         
-<h1>Imagefill Demo <small>A very rough and ready demo of imagefill</small></h1>
+<h1>Imagefill Demo <small>A rough and ready demo of imagefill</small></h1>
 <img src="images/tobydog.jpg" alt="" class="imagefill" data-imagefill-align="33.5/50" />
 
 <div class="tests">
 <h2>Vertical Alignment</h2>
-<p>The following tests use these exciting portrait images to demonstrate the control over how an image is cropped:<br />
+<p>
     <img height="200" src="images/portrait.jpg" alt="" /> 
     <img height="200" src="images/portrait-thirds.jpg" alt="" /> 
     <img height="200" src="images/portrait-golden.jpg" alt="" />
+<br />
+These exciting portrait images are used to demonstrate the control over how an image is cropped
 </p>
     
-<h3>Bottom <small>Vertical alignment bottom &lt;img data-imagefill-align="center/bottom" alt="" src="" /></small></h3>
+<h3>Bottom <small>Vertically align bottom &lt;img data-imagefill-align="center/bottom" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="centre/bottom" height="100" src="images/portrait.jpg" alt="" /></p>
 
-<h3>Center <small>Vertical alignment center &lt;img data-imagefill-align="center/center" alt="" src="" /></small></h3>
+<h3>Center <small>Vertically align center &lt;img data-imagefill-align="center/center" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="center/middle" src="images/portrait.jpg" alt="" /></p>
 
-<h3>Top <small>Vertical alignment top &lt;img data-imagefill-align="center/top" alt="" src="" /></small></h3>
+<h3>Top <small>Vertically align top &lt;img data-imagefill-align="center/top" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="center/top" src="images/portrait.jpg" alt="" /></p>
 
-<h3>Third <small>Vertical alignment third &lt;img data-imagefill-align="center/third" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="center/third" src="images/portrait-thirds.jpg" alt="" /></p>
+<h3>Third <small>Vertically align third &lt;img data-imagefill-align="center/third" alt="" src="" /></small></h3>
+<p><img class="imagefill" data-imagefill-align="center/third" src="images/portrait-thirds.jpg" alt="" />
+What you see here is the first third of the image lining up with the first third of the image viewport</p>
 
-<h3>Reverse Third <small>Vertical alignment reverse third &lt;img data-imagefill-align="center/-third" alt="" src="" /></small></h3>
+<h3>Reverse Third <small>Vertically align reverse third &lt;img data-imagefill-align="center/-third" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="center/-third" src="images/portrait-thirds.jpg" alt="" /></p>
 
-<h3>Golden <small>Vertical alignment golden &lt;img data-imagefill-align="center/golden" alt="" src="" /></small></h3>
+<h3>Golden <small>Vertically align golden &lt;img data-imagefill-align="center/golden" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="center/golden" src="images/portrait-golden.jpg" alt="" /></p>
 
-<h3>Reverse Golden <small>Vertical alignment reverse golden &lt;img data-imagefill-align="center/-golden" alt="" src="" /></small></h3>
+<h3>Reverse Golden <small>Vertically align reverse golden &lt;img data-imagefill-align="center/-golden" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="center/-golden" src="images/portrait-golden.jpg" alt="" /></p>
 
 
 
-<div class="horizontal">
 <h2>Horizontal Alignment</h2>
-<p>The following tests use these exciting landscape images to demonstrate the control over how an image is cropped:<br />
-    <img height="200" src="images/landscape.jpg" alt="" />
+<p>    <img height="200" src="images/landscape.jpg" alt="" />
     <img height="200" src="images/landscape-thirds.jpg" alt="" />
-    <img height="200" src="images/landscape-golden.jpg" alt="" /></p>
+    <img height="200" src="images/landscape-golden.jpg" alt="" />
+<br />These exciting landscape images are used to demonstrate the control over how an image is cropped
 
-<h3>Left <small>Vertical alignment left &lt;img data-imagefill-align="left/center" alt="" src="" /></small></h3>
+<div class="horizontal">
+
+<h3>Left <small>Horizontally align left &lt;img data-imagefill-align="left/center" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="left/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
 
-<h3>Center <small>Vertical alignment center &lt;img data-imagefill-align="center/center" alt="" src="" /></small></h3>
+<h3>Center <small>Horizontally align center &lt;img data-imagefill-align="center/center" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="middle/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
 
-<h3>Right <small>Vertical alignment right &lt;img data-imagefill-align="right/center" alt="" src="" /></small></h3>
+<h3>Right <small>Horizontally align right &lt;img data-imagefill-align="right/center" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="right/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
 
-<h3>Third <small>Vertical alignment third &lt;img data-imagefill-align="third/center" alt="" src="" /></small></h3>
+<h3>Third <small>Horizontally align third &lt;img data-imagefill-align="third/center" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="third/center" data-imagefill-class="bob" src="images/landscape-thirds.jpg" alt="" /></p>
 
-<h3>Reverse Third <small>Vertical alignment reverse third &lt;img data-imagefill-align="-third/center" alt="" src="" /></small></h3>
+<h3>Reverse Third <small>Horizontally align reverse third &lt;img data-imagefill-align="-third/center" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="-third/center" data-imagefill-class="bob" src="images/landscape-thirds.jpg" alt="" /></p>
 
-<h3>Golden <small>Vertical alignment golden &lt;img data-imagefill-align="golden/center" alt="" src="" /></small></h3>
+<h3>Golden <small>Horizontally align golden &lt;img data-imagefill-align="golden/center" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="golden/center" data-imagefill-class="bob" src="images/landscape-golden.jpg" alt="" /></p>
 
-<h3>Reverse Golden <small>Vertical alignment reverse golden &lt;img data-imagefill-align="-golden/center" alt="" src="" /></small></h3>
+<h3>Reverse Golden <small>Horizontally align reverse golden &lt;img data-imagefill-align="-golden/center" alt="" src="" /></small></h3>
 <p><img class="imagefill" data-imagefill-align="-golden/center" data-imagefill-class="bob" src="images/landscape-golden.jpg" alt="" /></p>
 
 </div>
