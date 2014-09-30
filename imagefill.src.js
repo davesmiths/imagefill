@@ -1,4 +1,4 @@
-/* imagefill v2.0.0 https://github.com/davesmiths/imagefill */
+/* imagefill v2.0.1 https://github.com/davesmiths/imagefill */
 (function($) {
 	
 	'use strict';
@@ -197,11 +197,29 @@
 		var $this = $(this)
 			,$wrapper
 			,imagefillWrapperClass
+			,thisWidth
+			,thisHeight
+			,currentlyViewedHeight
 		;
 		
 		imagefillWrapperClass = 'imagefill-wrapper ';
 		imagefillWrapperClass += $this.data('imagefill-class') || '';
 		
+		currentlyViewedHeight = $this.height();
+
+		// Get the image width and height
+		if ($this.data('imagefill-image-ratio') === undefined) {
+			$this.css({
+				display: 'block'
+				,position: 'static'
+				,width: 'auto'
+				,height: 'auto'
+			});
+			thisWidth = $this.width();
+			thisHeight = $this.height();
+			$this.data('imagefill-image-ratio', thisWidth / thisHeight);
+		}
+
 		// Wrap image if necessary
 		if ($this.parent().is('.' + imagefillWrapperClass) === false) {
 			$this.wrap('<div class="' + imagefillWrapperClass + '"></div>');
@@ -212,20 +230,16 @@
 			,position:'relative'
 		});
 		
-		// Get the image width and height
-		if ($this.data('imagefill-image-ratio') === undefined) {
-			$this.css({
-				display: 'block'
-				,position: 'static'
-			});
-			$this.data('imagefill-image-ratio', $this.width() / $this.height());
+		// To rectify cases where autoplay was set, but the video didn't play
+		if ($this[0].autoplay && $this[0].autoplay !== false) {
+			$this[0].play();
 		}
+		
 		// Make position absolute in order to not upset the first wrapper width and height call in run()
 		$this.css({position:'absolute'});
-		
 		// If the wrapper has no (min-)height use the height of the image
 		if ($wrapper.height() === 0) {
-    		$wrapper.css('minHeight', $this.height() + 'px');
+    		$wrapper.css('minHeight', currentlyViewedHeight + 'px');
 		}
 		
 		run.call(this);
