@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Imagefill Demo</title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="../imagefill.src.js"></script>
+        <script>
+            $(function() {
+                $('.imagefill').imagefill();
+                $('.jsimagefill').imagefill({align:'right/bottom',className:'bob',valign:'top'});
+                // Note the valign top overrides valign provided the more general align right/bottom
+            });
+        </script>
+        <style type="text/css">
+            
+			html {height:100%;}
+            body {margin:0px;padding:0;font-size:20px;line-height:1.5;color:#999;font-family:"Roboto Slab", serif;height:100%;}
+            
+            h1, h2, h3 {font-family:"Roboto Slab", serif;font-weight:700;margin-bottom:10px;color:#e200e6;}
+            h1 {font-size:2em;margin-bottom:20px;position:absolute;top:60px;left:80px;right:80px;z-index:10;}
+            h1 small {font-size:0.7em;display:block;font-weight:normal;color:#999;}
+            h2 {font-size:1.5em;}
+            h2 small {font-size:0.8em;display:block;font-weight:normal;color:#999;}
+            h3 {font-size:1.25em;font-weight:normal;margin-bottom:9px;}
+            h3 small {font-size:0.9em;display:block;font-weight:normal;color:#999;}
+            p {margin-top:0;margin-bottom:30px;}
+            
+            
+            
+            
+        </style>
+    </head>
+    <body>
+        
+        
+<h1>Imagefill Demo <small>A rough and ready demo of imagefill</small></h1>
+<img src="images/tobydog.jpg" alt="" class="imagefill" data-imagefill-align="33.5/50" width="800" height="546" style="height:100%;" />
+<img src="images/tobydog.jpg" alt="" class="imagefill" data-imagefill-align="100/100" width="800" height="546" style="height:100%;" />
+ 
+    </body>
+</html>
