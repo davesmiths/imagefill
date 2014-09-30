@@ -217,6 +217,11 @@
 			});
 			thisWidth = $this.width();
 			thisHeight = $this.height();
+			if (thisHeight === 0) {
+				// Fallback to use element attributes
+				thisHeight = $this.attr('height');
+				thisWidth = $this.attr('width');
+			}
 			$this.data('imagefill-image-ratio', thisWidth / thisHeight);
 		}
 
