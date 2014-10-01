@@ -195,10 +195,14 @@
 	runonce = function() {
 		
 		var $this = $(this)
+			,isVideo = $this.is('video')
 			,$wrapper
 			,imagefillWrapperClass
 			,thisWidth
 			,thisHeight
+			,thisAttrWidth
+			,thisAttrHeight
+			,ratio
 			,currentlyViewedHeight
 		;
 		
@@ -209,20 +213,30 @@
 
 		// Get the image width and height
 		if ($this.data('imagefill-image-ratio') === undefined) {
+			
 			$this.css({
 				display: 'block'
 				,position: 'static'
 				,width: 'auto'
 				,height: 'auto'
 			});
+			
 			thisWidth = $this.width();
 			thisHeight = $this.height();
-			if (thisHeight === 0) {
-				// Fallback to use element attributes
-				thisHeight = $this.attr('height');
-				thisWidth = $this.attr('width');
+			
+			// Fallback to use element attributes
+			thisAttrHeight = $this.attr('height');
+			thisAttrWidth = $this.attr('width');
+			
+			if (thisHeight === 0 || (isVideo && thisWidth === 300 && thisHeight === 150)) { // 300 x 150 is a default width and height for the video element
+				ratio = thisAttrWidth / thisAttrHeight;
 			}
-			$this.data('imagefill-image-ratio', thisWidth / thisHeight);
+			else {
+				ratio = thisWidth / thisHeight;
+			}
+			
+			$this.data('imagefill-image-ratio', ratio);
+			
 		}
 
 		// Wrap image if necessary
@@ -246,6 +260,7 @@
 		if ($wrapper.height() === 0) {
     		$wrapper.css('minHeight', currentlyViewedHeight + 'px');
 		}
+//console.log(thisHeight, thisWidth, thisAttrHeight, thisAttrWidth, currentlyViewedHeight);
 		
 		run.call(this);
 	};
