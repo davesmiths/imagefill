@@ -43,7 +43,7 @@ Markup:
 JavaScript:
 ```
 $(function() {
-    $('.imagefill').imagefill({align:'third/50'});    
+    $('.thing').imagefill({align:'third/50'});    
 });
 ```
 
@@ -117,6 +117,6 @@ Markup
 
 JavaScript
 ```
-$('.imagefill').imagefill({className:'wop'});
+$('.thing').imagefill({className:'wop'});
 ```
 
