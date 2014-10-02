@@ -59,7 +59,7 @@ Options
 * -third - aligns the second third of the image with the second third of the wrapper div
 * golden - aligns the first golden intersection at 0.6180... with the same point on the wrapper
 * -golden - aligns the reverse golden intersection at 0.3819... with the same point on the wrapper
-* 0-100 - a percentage where 0 is equivalent to top and 100 is bottom
+* 0-100 - a percentage where 0 is equivalent to top and 100 is bottom - aligns the vertical n% of the image and wrapper
 
 ###halign
 * left
@@ -69,7 +69,7 @@ Options
 * -third - aligns the second third of the image with the second third of the wrapper div
 * golden - aligns the first golden intersection at 0.6180... with the same point on the wrapper
 * -golden - aligns the reverse golden intersection at 0.3819... with the same point on the wrapper
-* 0-100 - a percentage where 0 is equivalent to left and 100 is right
+* 0-100 - a percentage where 0 is equivalent to left and 100 is right - aligns the horizontal n% of the image and wrapper
 
 ###align
 * halign/valign - a more compact way of applying halign and valign
