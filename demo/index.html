@@ -7,7 +7,8 @@
         <script src="../imagefill.src.js"></script>
         <script>
             $(function() {
-                $('.imagefill').imagefill();
+                $('[data-imagefill]').imagefill();
+//                $('.imagefill').imagefill();
                 $('.jsimagefill').imagefill({align:'right/bottom',className:'bob',valign:'top'});
                 // Note the valign top overrides valign provided the more general align right/bottom
             });
@@ -48,7 +49,7 @@
         
 <h1>Imagefill Demo <small>A rough and ready demo of imagefill</small></h1>
 <p>See also a <a href="fullscreen.html">height: 100% demo</a></p>
-<img src="images/tobydog.jpg" alt="" class="imagefill" data-imagefill-align="33.5/50" width="800" height="546" />
+<img src="images/tobydog.jpg" alt="" data-imagefill="33.5/50" width="800" height="546" />
 
 <div class="tests">
 <h2>Vertical Alignment</h2>
@@ -59,28 +60,38 @@
 <br />
 These exciting portrait images are used to demonstrate the control over how an image is cropped
 </p>
-    
-<h3>Bottom <small>Vertically align bottom &lt;img data-imagefill-align="center/bottom" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="centre/bottom" height="100" src="images/portrait.jpg" alt="" /></p>
 
-<h3>Center <small>Vertically align center &lt;img data-imagefill-align="center/center" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="center/middle" src="images/portrait.jpg" alt="" /></p>
 
-<h3>Top <small>Vertically align top &lt;img data-imagefill-align="center/top" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="center/top" src="images/portrait.jpg" alt="" /></p>
+<h3>Bottom <small>Align image and wrapper bottoms <small>&lt;img data-imagefill="center/bottom" alt="" src="" /&gt;</small></small></h3>
+<p><img data-imagefill="centre/bottom" height="100" src="images/portrait.jpg" alt="" /></p>
 
-<h3>Third <small>Vertically align third &lt;img data-imagefill-align="center/third" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="center/third" src="images/portrait-thirds.jpg" alt="" />
+
+<h3>Center <small>Align image and wrapper vertical centers <small>&lt;img data-imagefill="center/center" alt="" src="" /&gt;</small></small></h3>
+<p><img data-imagefill="center/center" src="images/portrait.jpg" alt="" /></p>
+
+
+<h3>Top <small>Align image and wrapper tops <small>&lt;img data-imagefill="center/top" alt="" src="" /&gt;</small></small></h3>
+<p><img data-imagefill="center/top" src="images/portrait.jpg" alt="" /></p>
+
+
+<h3>Third <small>Align image and wrapper vertical thirds <small>&lt;img data-imagefill="center/third" alt="" src="" /&gt;</small></small></h3>
+<p><img data-imagefill="center/third" src="images/portrait-thirds.jpg" alt="" />
 What you see here is the first third of the image lining up with the first third of the image viewport</p>
 
-<h3>Reverse Third <small>Vertically align reverse third &lt;img data-imagefill-align="center/-third" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="center/-third" src="images/portrait-thirds.jpg" alt="" /></p>
 
-<h3>Golden <small>Vertically align golden &lt;img data-imagefill-align="center/golden" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="center/golden" src="images/portrait-golden.jpg" alt="" /></p>
+<h3>Reverse Third <small>Align image and wrapper vertical reverse thirds <small>&lt;img data-imagefill="center/-third" alt="" src="" /&gt;</small></small></h3>
+<p><img data-imagefill="center/-third" src="images/portrait-thirds.jpg" alt="" /></p>
 
-<h3>Reverse Golden <small>Vertically align reverse golden &lt;img data-imagefill-align="center/-golden" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="center/-golden" src="images/portrait-golden.jpg" alt="" /></p>
+
+<h3>Golden <small>Align image and wrapper vertical goldens <small>&lt;img data-imagefill="center/golden" alt="" src="" /&gt;</small></small></h3>
+<p><img data-imagefill="center/golden" src="images/portrait-golden.jpg" alt="" /></p>
+
+
+<h3>Reverse Golden <small>Align image and wrapper vertical reverse goldens <small>&lt;img data-imagefill="center/-golden" alt="" src="" /&gt;</small></small></h3>
+<p><img data-imagefill="center/-golden" src="images/portrait-golden.jpg" alt="" /></p>
+
+
+
 
 
 
@@ -92,26 +103,33 @@ What you see here is the first third of the image lining up with the first third
 
 <div class="horizontal">
 
-<h3>Left <small>Horizontally align left &lt;img data-imagefill-align="left/center" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="left/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
 
-<h3>Center <small>Horizontally align center &lt;img data-imagefill-align="center/center" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="middle/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
+<h3>Left <small>Horizontally align left &lt;img data-imagefill="left/center" alt="" src="" /&gt;</small></h3>
+<p><img data-imagefill="left/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
 
-<h3>Right <small>Horizontally align right &lt;img data-imagefill-align="right/center" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="right/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
 
-<h3>Third <small>Horizontally align third &lt;img data-imagefill-align="third/center" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="third/center" data-imagefill-class="bob" src="images/landscape-thirds.jpg" alt="" /></p>
+<h3>Center <small>Horizontally align center &lt;img data-imagefill="center/center" alt="" src="" /&gt;</small></h3>
+<p><img data-imagefill="center/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
 
-<h3>Reverse Third <small>Horizontally align reverse third &lt;img data-imagefill-align="-third/center" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="-third/center" data-imagefill-class="bob" src="images/landscape-thirds.jpg" alt="" /></p>
 
-<h3>Golden <small>Horizontally align golden &lt;img data-imagefill-align="golden/center" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="golden/center" data-imagefill-class="bob" src="images/landscape-golden.jpg" alt="" /></p>
+<h3>Right <small>Horizontally align right &lt;img data-imagefill="right/center" alt="" src="" /&gt;</small></h3>
+<p><img data-imagefill="right/center" data-imagefill-class="bob" src="images/landscape.jpg" alt="" /></p>
 
-<h3>Reverse Golden <small>Horizontally align reverse golden &lt;img data-imagefill-align="-golden/center" alt="" src="" /></small></h3>
-<p><img class="imagefill" data-imagefill-align="-golden/center" data-imagefill-class="bob" src="images/landscape-golden.jpg" alt="" /></p>
+
+<h3>Third <small>Horizontally align third &lt;img data-imagefill="third/center" alt="" src="" /&gt;</small></h3>
+<p><img data-imagefill="third/center" data-imagefill-class="bob" src="images/landscape-thirds.jpg" alt="" /></p>
+
+
+<h3>Reverse Third <small>Horizontally align reverse third &lt;img data-imagefill="-third/center" alt="" src="" /&gt;</small></h3>
+<p><img data-imagefill="-third/center" data-imagefill-class="bob" src="images/landscape-thirds.jpg" alt="" /></p>
+
+
+<h3>Golden <small>Horizontally align golden &lt;img data-imagefill="golden/center" alt="" src="" /&gt;</small></h3>
+<p><img data-imagefill="golden/center" data-imagefill-class="bob" src="images/landscape-golden.jpg" alt="" /></p>
+
+
+<h3>Reverse Golden <small>Horizontally align reverse golden &lt;img data-imagefill="-golden/center" alt="" src="" /&gt;</small></h3>
+<p><img data-imagefill="-golden/center" data-imagefill-class="bob" src="images/landscape-golden.jpg" alt="" /></p>
 
 </div>
 

@@ -7,8 +7,7 @@
         <script src="../imagefill.src.js"></script>
         <script>
             $(function() {
-                $('.imagefill').imagefill();
-                $('.jsimagefill').imagefill({align:'right/bottom',className:'bob',valign:'top'});
+                $('[data-imagefill]').imagefill();
                 // Note the valign top overrides valign provided the more general align right/bottom
             });
         </script>
@@ -37,8 +36,8 @@
 <h1>Imagefill Demo <small>A rough and ready demo of imagefill</small></h1>
 <p>Two images set with height:100%, the second with a different focus/align</p>
 </div>
-<img src="images/tobydog.jpg" alt="" class="imagefill" data-imagefill-align="33.5/50" width="800" height="546" style="height:100%;" />
-<img src="images/tobydog.jpg" alt="" class="imagefill" data-imagefill-align="100/100" width="800" height="546" style="height:100%;" />
+<img src="images/tobydog.jpg" alt="" data-imagefill="33.5/50" width="800" height="546" style="height:100%;" />
+<img src="images/tobydog.jpg" alt="" data-imagefill="100/100" width="800" height="546" style="height:100%;" />
  
     </body>
 </html>

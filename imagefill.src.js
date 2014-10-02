@@ -1,4 +1,4 @@
-/* imagefill v2.0.1 https://github.com/davesmiths/imagefill */
+/* imagefill v2.1.0 https://github.com/davesmiths/imagefill */
 (function($) {
 	
 	'use strict';
@@ -12,7 +12,20 @@
 		// tid is the timerid used to clear timeout in the window resize event
 		,tid
 		
-		,imagefillDataName = 'imagefill'
+		,imagefill_str = 'imagefill'
+		,third_str = 'third'
+		,neg_third_str = '-' + third_str
+		,golden_str = 'golden'
+		,neg_golden_str = '-' + golden_str
+		,center_str = 'center'
+		,auto_str = 'auto'
+		,goldenRatioInv = 0.61803398874985
+		,goldenRatioInvLeft = 0.38196601125015
+		,imagefill_align_str = imagefill_str + '-align'
+		,imagefill_halign_str = imagefill_str + '-halign'
+		,imagefill_valign_str = imagefill_str + '-valign'
+		,imagefill_class_str = imagefill_str + '-class'
+		,imagefill_image_ratio_str = imagefill_str + '-image-ratio'
 		
 		,run
 		,runonce
@@ -41,43 +54,38 @@
 			,height
 			,css
 			,$wrapper
-			,goldenRatioInv = 0.61803398874985
-			,goldenRatioInvLeft = 0.38196601125015
-			,imagefillDataHalign= imagefillDataName + '-halign'
-			,imagefillDataValign = imagefillDataName + '-valign'
-			,imagefillDataAlign = imagefillDataName + '-align'
 		;
 		
 		$wrapper = $this.parent();
 		$image = $this;
 		
 		// Here in case the preset changes at any point
-		alignPreset = $image.data(imagefillDataAlign) || 'center/center';
+		alignPreset = $image.data(imagefill_align_str) || $image.data(imagefill_str) || center_str + '/' + center_str;
 		alignPreset = alignPreset.split('/');
 		horizontalPreset = alignPreset[0];
-		verticalPreset = alignPreset[1] || 'center';
-		horizontalPreset = $image.data(imagefillDataHalign) || horizontalPreset;
-		verticalPreset = $image.data(imagefillDataValign) || verticalPreset;
-		
+		verticalPreset = alignPreset[1] || center_str;
+		horizontalPreset = $image.data(imagefill_halign_str) || horizontalPreset;
+		verticalPreset = $image.data(imagefill_valign_str) || verticalPreset;
+//console.log(horizontalPreset, verticalPreset);
 		
 		wrapperHeight = $wrapper.height() * 1;
 		wrapperWidth = $wrapper.width() * 1;
 		
 		wrapperRatio = wrapperWidth / wrapperHeight;
-		imageRatio = $image.data('imagefill-image-ratio');
+		imageRatio = $image.data(imagefill_image_ratio_str);
 
 //console.log('imageHeight:',imageHeight, 'imageWidth:', imageWidth);
 
 		if (wrapperRatio > imageRatio) {
 			ratio = true;
 			width = '100%';
-			height = 'auto';
+			height = auto_str;
 			imageWidth = wrapperWidth;
 			imageHeight = wrapperWidth / imageRatio;
 		}
 		else {
 			ratio = false;
-			width = 'auto';
+			width = auto_str;
 			height = '100%';
 			imageWidth = wrapperHeight * imageRatio;
 			imageHeight = wrapperHeight;
@@ -101,10 +109,10 @@
 			position: 'absolute'
 			,top: heightDifference / 3 + 'px'
 			,left: widthDifference / 3 + 'px'
-			,bottom: 'auto'
-			,right: 'auto'
-			,marginRight: 'auto'
-			,marginBottom: 'auto'
+			,bottom: auto_str
+			,right: auto_str
+			,marginRight: auto_str
+			,marginBottom: auto_str
 		};
 		
 			
@@ -114,16 +122,16 @@
 			if ($.isNumeric(verticalPreset)) {
 				verticalPreset = verticalPreset / 100;
 			}
-			else if (verticalPreset === 'third') {
+			else if (verticalPreset === third_str) {
 				verticalPreset = 1/3;
 			}
-			else if (verticalPreset === '-third') {
+			else if (verticalPreset === neg_third_str) {
 				verticalPreset = 2/3;
 			}
-			else if (verticalPreset === 'golden') {
+			else if (verticalPreset === golden_str) {
 				verticalPreset = goldenRatioInvLeft;
 			}
-			else if (verticalPreset === '-golden') {
+			else if (verticalPreset === neg_golden_str) {
 				verticalPreset = goldenRatioInv;
 			}
 			else if (verticalPreset === 'top') {
@@ -132,13 +140,13 @@
 			else if (verticalPreset === 'bottom') {
 				verticalPreset = 1;
 			}
-			else if (verticalPreset === 'middle' || verticalPreset === 'center') {
+			else if (verticalPreset === center_str) {
 				verticalPreset = 0.5;
 			}
 			
 			if (0 <= verticalPreset && verticalPreset <= 1) {
 				if (verticalPreset === 1) {
-					css.top = 'auto';
+					css.top = auto_str;
 					css.bottom = 0;
 				}
 				else {
@@ -154,16 +162,16 @@
 			if ($.isNumeric(horizontalPreset)) {
 				horizontalPreset = horizontalPreset / 100;
 			}
-			else if (horizontalPreset === 'third') {
+			else if (horizontalPreset === third_str) {
 				horizontalPreset = 1/3;
 			}
-			else if (horizontalPreset === '-third') {
+			else if (horizontalPreset === neg_third_str) {
 				horizontalPreset = 2/3;
 			}
-			else if (horizontalPreset === 'golden') {
+			else if (horizontalPreset === golden_str) {
 				horizontalPreset = goldenRatioInvLeft;
 			}
-			else if (horizontalPreset === '-golden') {
+			else if (horizontalPreset === neg_golden_str) {
 				horizontalPreset = goldenRatioInv;
 			}
 			else if (horizontalPreset === 'left') {
@@ -172,13 +180,13 @@
 			else if (horizontalPreset === 'right') {
 				horizontalPreset = 1;
 			}
-			else if (horizontalPreset === 'middle' || horizontalPreset === 'center') {
+			else if (horizontalPreset === center_str) {
 				horizontalPreset = 0.5;
 			}
 			
 			if (0 <= horizontalPreset && horizontalPreset <= 1) {
 				if (horizontalPreset === 1) {
-					css.left = 'auto';
+					css.left = auto_str;
 					css.right = 0;
 				}
 				else {
@@ -206,19 +214,17 @@
 			,currentlyViewedHeight
 		;
 		
-		imagefillWrapperClass = 'imagefill-wrapper ';
-		imagefillWrapperClass += $this.data('imagefill-class') || '';
 		
 		currentlyViewedHeight = $this.height();
 
 		// Get the image width and height
-		if ($this.data('imagefill-image-ratio') === undefined) {
+		if ($this.data(imagefill_image_ratio_str) === undefined) {
 			
 			$this.css({
 				display: 'block'
 				,position: 'static'
-				,width: 'auto'
-				,height: 'auto'
+				,width: auto_str
+				,height: auto_str
 			});
 			
 			thisWidth = $this.width();
@@ -235,12 +241,14 @@
 				ratio = thisWidth / thisHeight;
 			}
 			
-			$this.data('imagefill-image-ratio', ratio);
+			$this.data(imagefill_image_ratio_str, ratio);
 			
 		}
 
 		// Wrap image if necessary
+		imagefillWrapperClass = imagefill_str + '-wrapper ';
 		if ($this.parent().is('.' + imagefillWrapperClass) === false) {
+    		imagefillWrapperClass += $this.data(imagefill_class_str) || '';
 			$this.wrap('<div class="' + imagefillWrapperClass + '"></div>');
 		}
 		$wrapper = $this.parent();
@@ -263,6 +271,7 @@
 //console.log(thisHeight, thisWidth, thisAttrHeight, thisAttrWidth, currentlyViewedHeight);
 		
 		run.call(this);
+		
 	};
 	
 	$.fn.imagefill = function(options) {
@@ -273,10 +282,11 @@
 			)
 			,$this = $(this)
 		;
-		$this.data('imagefill-align', o.align);
-		$this.data('imagefill-halign', o.halign);
-		$this.data('imagefill-valign', o.valign);
-		$this.data('imagefill-class', o.className);
+		$this.data(imagefill_str, o.align);
+		$this.data(imagefill_align_str, o.align);
+		$this.data(imagefill_halign_str, o.halign);
+		$this.data(imagefill_valign_str, o.valign);
+		$this.data(imagefill_class_str, o.className);
 		
 		if (o.delay !== undefined) {
 			delay = o.delay;
@@ -295,13 +305,12 @@
 			
 			// Optimised to call run when the width and height attributes are set, rather than wait for the image to load
 			if (width === undefined || height === undefined) {
-				$(this).on('load', function() {
+				$img.on('load', function() {
 					runonce.call(this);
 				});
 			}
 			else {
-				$img.data('imagefill-image-width', width);
-				$img.data('imagefill-image-height', height);
+				$img.data(imagefill_image_ratio_str, width / height);
 				runonce.call(this);
 			}
 			// There may be caveats

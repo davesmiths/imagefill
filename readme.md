@@ -4,11 +4,14 @@ imagefill
 **A bit of artistic direction for images - A jQuery plugin to make images fill the available space and crop with a bit of artistic direction in responsive layouts**  
 Created 2013 November 26
 
+
+
+
 Usage
 -----
 Add a class to an image:
 ```
-<img class="imagefill" src="path/to/image.jpg" width="400" height="200" alt="" />
+<img data-imagefill src="path/to/image.jpg" width="400" height="200" alt="" />
 ```
 Load jQuery and the plugin in some way, for example:
 ```
@@ -19,20 +22,22 @@ Load jQuery and the plugin in some way, for example:
 Do the business:
 ```
 $(function() {
-    $('.imagefill').imagefill();
+    $('[data-imagefill]').imagefill();
 });
 ```
-Play with some options
 
-Options
--------
+
+
+
+More interesting stuff
+----------------------
 
 Options are applied via the markup with data attributes or JavaScript.  
 *Markup wins if options are applied in JavaScript and markup*
 
 Markup:
 ```
-<img class="imagefill" data-imagefill-align="center/33" src="" width="400" height="200" alt="" />
+<img class="imagefill" data-imagefill="center/33" src="" width="400" height="200" alt="" />
 ```
 
 JavaScript:
@@ -41,6 +46,12 @@ $(function() {
     $('.imagefill').imagefill({align:'third/50'});    
 });
 ```
+
+
+
+
+Options
+-------
 
 ###valign
 * top
@@ -65,6 +76,10 @@ $(function() {
 ###align
 * halign/valign - a more compact way of applying halign and valign
 
+
+
+
+
 How it works
 ------------
 Imagefill makes an image fill the available horizontal space and crops appropriately through assignable presets.
@@ -74,8 +89,13 @@ It does this by making sure there is a wrapper div around the image. The wrapper
 A window.resize event is handled that updates all imagefill images in a regulated and sensible way.
 
 
+
+
+
 Advanced
 --------
+
+
 
 ###Get a bit responsive and control the image height
 CSS
@@ -86,14 +106,13 @@ CSS
 }
 ```
 
-
     
-###Custom class option
-The wrapper div gets both the standard class of imagefill-wrapper and the custom class given
+###Custom wrapper class
+The wrapper div gets a standard class of imagefill-wrapper. The following adds an extra custom class of "wop" to the wrapper
 
 Markup
 ```
-<img class="imagefill" data-imagefill-class="wop" src="" width="400" height="200" alt="" />
+<img data-imagefill data-imagefill-class="wop" src="" width="400" height="200" alt="" />
 ```
 
 JavaScript
@@ -101,10 +120,3 @@ JavaScript
 $('.imagefill').imagefill({className:'wop'});
 ```
 
-###Delay option
-Change the window.resize event throttle from the default 200 ms to a setting of your choosing:
-```
-$(function() {
-    $('.imagefill').imagefill({delay: 100});
-});
-```
