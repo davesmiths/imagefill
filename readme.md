@@ -37,7 +37,7 @@ Options are applied via the markup with data attributes or JavaScript.
 
 Markup:
 ```
-<img class="imagefill" data-imagefill="center/33" src="" width="400" height="200" alt="" />
+<img data-imagefill="center/33" src="" width="400" height="200" alt="" />
 ```
 
 JavaScript:
@@ -55,7 +55,7 @@ Options
 
 ###valign
 * top
-* middle or center (default) - aligns the middle of the image with the middle of the wrapper div
+* center (default) - aligns the image and wrapper centers
 * bottom
 * third - aligns the first third of the image with the first third of the wrapper div
 * -third - aligns the second third of the image with the second third of the wrapper div
@@ -65,7 +65,7 @@ Options
 
 ###halign
 * left
-* middle or center (default) - aligns the middle of the image with the middle of the wrapper div
+* center (default) - aligns the image and wrapper centers
 * right
 * third - aligns the first third of the image with the first third of the wrapper div
 * -third - aligns the second third of the image with the second third of the wrapper div
