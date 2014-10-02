@@ -13,17 +13,15 @@ Add a class to an image:
 ```
 <img data-imagefill src="path/to/image.jpg" width="400" height="200" alt="" />
 ```
-Load jQuery and the plugin in some way, for example:
+Load jQuery and the plugin in some way and do the business, for example:
 ```
 <script src="pathto/jquery.js"></script>
 <script src="pathto/imagefill.js"></script>
-```
-
-Do the business:
-```
+<script>
 $(function() {
     $('[data-imagefill]').imagefill();
 });
+</script>
 ```
 
 
