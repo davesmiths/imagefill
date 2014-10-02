@@ -9,7 +9,7 @@ Created 2013 November 26
 
 Usage
 -----
-Add a class to an image:
+Add a data attribute to an image:
 ```
 <img data-imagefill src="path/to/image.jpg" width="400" height="200" alt="" />
 ```
