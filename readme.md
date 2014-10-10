@@ -74,7 +74,9 @@ Assist
 ```
 <img data-imagefill-assist data-imagefill="center/33" src="" width="400" height="200" alt="" />
 ```
-Once data-imagefill-assist has been added, click the image at a desired focal point and get the halign and valign percentages from the console to copy and paste
+Once data-imagefill-assist has been added, click the image at a desired focal point and get the halign and valign percentages from the console to copy and paste.
+
+Remember to remove for production. Note this can be done using the browser's inspector, saving the need to update the page.
 
 How it works
 ------------
