@@ -31,7 +31,7 @@ More interesting stuff
 ```
 <img data-imagefill="center/33" src="" width="400" height="200" alt="" />
 ```
-When the image is cropped this will bring focus to the horizontal center and vertical 33%. This works like CSS background positions; the vertical 33% line of the image aligns with the vertical 33% of the crop.
+When the image is cropped this will keep focus to the horizontal center and vertical 33%. This works like CSS background positions; the vertical 33% of the image aligns with the vertical 33% of the crop.
 
 With JavaScript:
 ```
