@@ -69,8 +69,12 @@ Options
 * halign/valign - a more compact way of applying halign and valign
 
 
-
-
+Assist
+------
+```
+<img data-imagefill-assist data-imagefill="center/33" src="" width="400" height="200" alt="" />
+```
+Once data-imagefill-assist has been added, click the image at a desired focal point and get the halign and valign percentages from the console to copy and paste
 
 How it works
 ------------
