@@ -7,11 +7,10 @@ imagefill
 
 Usage
 -----
-Add a data attribute to an image:
 ```
 <img data-imagefill src="path/to/image.jpg" width="400" height="200" alt="" />
 ```
-Load jQuery and the plugin in some way and do the business, for example:
+and load jQuery and the plugin in some way and do the business, for example:
 ```
 <script src="pathto/jquery.js"></script>
 <script src="pathto/imagefill.js"></script>
