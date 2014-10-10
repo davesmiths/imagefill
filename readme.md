@@ -28,21 +28,19 @@ $(function() {
 More interesting stuff
 ----------------------
 
-Options are applied via the markup with data attributes or JavaScript.  
-*Markup wins if options are applied in JavaScript and markup*
-
-Markup:
 ```
 <img data-imagefill="center/33" src="" width="400" height="200" alt="" />
 ```
+When the image is cropped this will bring focus to the horizontal center and vertical 33%. This works like CSS background positions; the vertical 33% line of the image aligns with the vertical 33% of the crop.
 
-JavaScript:
+With JavaScript:
 ```
 $(function() {
     $('.thing').imagefill({align:'third/50'});    
 });
 ```
 
+Note that markup wins if the options are applied in JavaScript and markup
 
 
 
