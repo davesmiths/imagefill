@@ -1,4 +1,4 @@
-/* imagefill v2.1.0 https://github.com/davesmiths/imagefill */
+/* imagefill v2.2.0 https://github.com/davesmiths/imagefill */
 (function($) {
 	
 	'use strict';
@@ -271,6 +271,27 @@
 //console.log(thisHeight, thisWidth, thisAttrHeight, thisAttrWidth, currentlyViewedHeight);
 		
 		run.call(this);
+		
+		
+		// Focus assist: If data-imagefill-assist is there then when the 
+		// image is clicked the coordinates as percentages are returned to the console to use in the data-imagefill=""
+		$this.on('click', function(e) {
+			var $img = $(this)
+				,width
+				,height
+				,offset
+				,x
+				,y
+			;
+			if ($img.is('[data-imagefill-assist]')) {
+				width = $img.width();
+				height = $img.height();
+				offset = $img.offset();
+				x = Math.floor((e.pageX - offset.left) / width * 1000) / 10;
+				y = Math.floor((e.pageY - offset.top) / height * 1000) / 10;
+				console.log(x + '/' + y);
+			}
+		});
 		
 	};
 	
