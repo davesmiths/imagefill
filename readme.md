@@ -1,9 +1,7 @@
 imagefill
 =========
 
-**A bit of artistic direction for images (and videos) - A jQuery plugin to make images and videos fill the available space and crop with a bit of artistic direction in responsive layouts**  
-Created 2013 November 26
-
+**A bit of artistic direction for images - A jQuery plugin to make images (and videos) fill the available space and crop with a bit of artistic direction in responsive layouts**  
 
 
 
@@ -118,3 +116,4 @@ JavaScript
 $('.thing').imagefill({className:'wop'});
 ```
 
+Created 2013 November 26
