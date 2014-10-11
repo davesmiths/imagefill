@@ -1,7 +1,7 @@
 imagefill
 =========
 
-**A bit of artistic direction for images - A jQuery plugin to make images (and videos) fill the available space and crop with a bit of artistic direction in responsive layouts**  
+**A bit of artistic direction for images - A jQuery plugin to make images (and videos) fill the available space in responsive layouts and crop to a focal point**  
 
 
 
@@ -9,8 +9,9 @@ Usage
 -----
 ```
 <img data-imagefill src="path/to/image.jpg" width="400" height="200" alt="" />
-
-<!-- load jQuery and the plugin in some way and do the business, for example: -->
+```
+Add jQuery, imagefill.js and do the business
+```
 <script src="pathto/jquery.js"></script>
 <script src="pathto/imagefill.js"></script>
 <script>
@@ -29,16 +30,9 @@ More interesting stuff
 ```
 <img data-imagefill="center/33" src="" width="400" height="200" alt="" />
 ```
-When the image is cropped this will keep focus to the horizontal center and vertical 33%. This works like CSS background positions; the vertical 33% of the image aligns with the vertical 33% of the crop.
+This tells imagefill the focal point of the image is at the horizontal center and 33% from the top. When the image is cropped the focal point will be maintained.
 
-With JavaScript:
-```
-$(function() {
-    $('.thing').imagefill({align:'third/50'});    
-});
-```
-
-Note that markup wins if the options are applied in JavaScript and markup
+Like CSS background positions; the vertical 33% of the image will align with the vertical 33% of the crop, and the horizontal center of the image and crop will align.
 
 
 
@@ -93,6 +87,15 @@ A window.resize event is handled that updates all imagefill images in a regulate
 Advanced
 --------
 
+###Using JavaScript instead of markup
+```
+$(function() {
+    $('.thing').imagefill({align:'third/50'});
+});
+```
+
+Note that markup wins if the options are applied in JavaScript and markup
+
 
 
 ###Get a bit responsive and control the image height
@@ -104,7 +107,7 @@ CSS
 }
 ```
 
-    
+
 ###Custom wrapper class
 The wrapper div gets a standard class of imagefill-wrapper. The following adds an extra custom class of "wop" to the wrapper
 
