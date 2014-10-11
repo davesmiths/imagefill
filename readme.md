@@ -32,7 +32,7 @@ More interesting stuff
 ```
 This tells imagefill the focal point of the image is at the horizontal center and 33% from the top. When the image is cropped the focal point will be maintained.
 
-Like CSS background positions; the vertical 33% of the image will align with the vertical 33% of the crop, and the horizontal center of the image and crop will align.
+Like CSS background positions the vertical 33% of the image will align with the vertical 33% of the crop, and the horizontal center of the image and crop will align.
 
 
 
