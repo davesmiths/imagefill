@@ -1,4 +1,5 @@
 /* imagefill v2.2.1 https://github.com/davesmiths/imagefill */
+window.console = window.console || {log: function() {}};
 (function($) {
 
 	'use strict';
@@ -6,52 +7,52 @@
 	// $collection, to collect all the elements that can passed into imagefill so they can be updated on window.resize efficiently
 	var $collection = $(),
 
-		// Delay, on window resize the delay regulates the calls to the main function to prevent potential overload and unnecessary calls
-		delay = 200,
+	// Delay, on window resize the delay regulates the calls to the main function to prevent potential overload and unnecessary calls
+	delay = 200,
 
-		// tid is the timerid used to clear timeout in the window resize event
-		tid,
+	// tid is the timerid used to clear timeout in the window resize event
+	tid,
 
-		imagefill_str = 'imagefill',
-		third_str = 'third',
-		neg_third_str = '-' + third_str,
-		golden_str = 'golden',
-		neg_golden_str = '-' + golden_str,
-		center_str = 'center',
-		auto_str = 'auto',
-		goldenRatioInv = 0.61803398874985,
-		goldenRatioInvLeft = 0.38196601125015,
-		imagefill_align_str = imagefill_str + '-align',
-		imagefill_halign_str = imagefill_str + '-halign',
-		imagefill_valign_str = imagefill_str + '-valign',
-		imagefill_class_str = imagefill_str + '-class',
-		imagefill_image_ratio_str = imagefill_str + '-image-ratio',
+	imagefill_str = 'imagefill',
+	third_str = 'third',
+	neg_third_str = '-' + third_str,
+	golden_str = 'golden',
+	neg_golden_str = '-' + golden_str,
+	center_str = 'center',
+	auto_str = 'auto',
+	goldenRatioInv = 0.61803398874985,
+	goldenRatioInvLeft = 0.38196601125015,
+	imagefill_align_str = imagefill_str + '-align',
+	imagefill_halign_str = imagefill_str + '-halign',
+	imagefill_valign_str = imagefill_str + '-valign',
+	imagefill_class_str = imagefill_str + '-class',
+	imagefill_image_ratio_str = imagefill_str + '-image-ratio',
 
-		run,
-		runonce,
-		runBuffer;
+	run,
+	runonce,
+	runBuffer;
 
 	// The main function
 	run = function() {
 
 		var $this = $(this),
-			$image,
-			alignPreset,
-			horizontalPreset,
-			verticalPreset,
-			wrapperHeight,
-			wrapperWidth,
-			imageHeight,
-			imageWidth,
-			heightDifference,
-			widthDifference,
-			wrapperRatio,
-			imageRatio,
-			ratio,
-			width,
-			height,
-			css,
-			$wrapper;
+		$image,
+		alignPreset,
+		horizontalPreset,
+		verticalPreset,
+		wrapperHeight,
+		wrapperWidth,
+		imageHeight,
+		imageWidth,
+		heightDifference,
+		widthDifference,
+		wrapperRatio,
+		imageRatio,
+		ratio,
+		width,
+		height,
+		css,
+		$wrapper;
 
 		$wrapper = $this.parent();
 		$image = $this;
@@ -63,7 +64,7 @@
 		verticalPreset = alignPreset[1] || center_str;
 		horizontalPreset = $image.data(imagefill_halign_str) || horizontalPreset;
 		verticalPreset = $image.data(imagefill_valign_str) || verticalPreset;
-//console.log(horizontalPreset, verticalPreset);
+		//console.log(horizontalPreset, verticalPreset);
 
 		wrapperHeight = $wrapper.height() * 1;
 		wrapperWidth = $wrapper.width() * 1;
@@ -71,7 +72,7 @@
 		wrapperRatio = wrapperWidth / wrapperHeight;
 		imageRatio = $image.data(imagefill_image_ratio_str);
 
-//console.log('imageHeight:',imageHeight, 'imageWidth:', imageWidth);
+		//console.log('imageHeight:',imageHeight, 'imageWidth:', imageWidth);
 
 		if (wrapperRatio > imageRatio) {
 			ratio = true;
@@ -96,10 +97,10 @@
 		heightDifference = wrapperHeight - imageHeight;
 		widthDifference = wrapperWidth - imageWidth;
 
-//console.log('valign:',verticalPreset, 'halign:', horizontalPreset);
-//console.log('wrapperHeight:',wrapperHeight, 'wrapperWidth:', wrapperWidth);
-//console.log('imageHeight:',imageHeight, 'imageWidth:', imageWidth);
-//console.log('wrapperRatio > imageRatio', wrapperRatio > imageRatio);
+		//console.log('valign:',verticalPreset, 'halign:', horizontalPreset);
+		//console.log('wrapperHeight:',wrapperHeight, 'wrapperWidth:', wrapperWidth);
+		//console.log('imageHeight:',imageHeight, 'imageWidth:', imageWidth);
+		//console.log('wrapperRatio > imageRatio', wrapperRatio > imageRatio);
 
 		// Default to valign third and halign third
 		css = {
@@ -200,15 +201,15 @@
 	runonce = function() {
 
 		var $this = $(this),
-			isVideo = $this.is('video'),
-			$wrapper,
-			imagefillWrapperClass,
-			thisWidth,
-			thisHeight,
-			thisAttrWidth,
-			thisAttrHeight,
-			ratio,
-			currentlyViewedHeight;
+		isVideo = $this.is('video'),
+		$wrapper,
+		imagefillWrapperClass,
+		thisWidth,
+		thisHeight,
+		thisAttrWidth,
+		thisAttrHeight,
+		ratio,
+		currentlyViewedHeight;
 
 		currentlyViewedHeight = $this.height();
 
@@ -243,7 +244,7 @@
 		// Wrap image if necessary
 		imagefillWrapperClass = imagefill_str + '-wrapper ';
 		if ($this.parent().is('.' + imagefillWrapperClass) === false) {
-    		imagefillWrapperClass += $this.data(imagefill_class_str) || '';
+			imagefillWrapperClass += $this.data(imagefill_class_str) || '';
 			$this.wrap('<div class="' + imagefillWrapperClass + '"></div>');
 		}
 		$wrapper = $this.parent();
@@ -261,9 +262,9 @@
 		$this.css({position:'absolute'});
 		// If the wrapper has no (min-)height use the height of the image
 		if ($wrapper.height() === 0) {
-    		$wrapper.css('minHeight', currentlyViewedHeight + 'px');
+			$wrapper.css('minHeight', currentlyViewedHeight + 'px');
 		}
-//console.log(thisHeight, thisWidth, thisAttrHeight, thisAttrWidth, currentlyViewedHeight);
+		//console.log(thisHeight, thisWidth, thisAttrHeight, thisAttrWidth, currentlyViewedHeight);
 
 		run.call(this);
 
@@ -273,11 +274,11 @@
 		$this.on('click', function(e) {
 
 			var $img = $(this),
-				width,
-				height,
-				offset,
-				x,
-				y;
+			width,
+			height,
+			offset,
+			x,
+			y;
 
 			if ($img.is('[data-imagefill-assist]')) {
 				width = $img.width();
@@ -295,68 +296,66 @@
 	$.fn.imagefill = function(options) {
 
 		var o = $.extend(
-				{},
-				options
-			),
-			$this = $(this);
+		{},
+		options
+	),
+	$this = $(this);
 
-		$this.data(imagefill_str, o.align);
-		$this.data(imagefill_align_str, o.align);
-		$this.data(imagefill_halign_str, o.halign);
-		$this.data(imagefill_valign_str, o.valign);
-		$this.data(imagefill_class_str, o.className);
+	$this.data(imagefill_str, o.align);
+	$this.data(imagefill_align_str, o.align);
+	$this.data(imagefill_halign_str, o.halign);
+	$this.data(imagefill_valign_str, o.valign);
+	$this.data(imagefill_class_str, o.className);
 
-		if (o.delay !== undefined) {
-			delay = o.delay;
-		}
+	if (o.delay !== undefined) {
+		delay = o.delay;
+	}
 
-		this.each(function() {
-			$collection = $collection.add(this);
-		});
+	this.each(function() {
+		$collection = $collection.add(this);
+	});
 
-		return this.each(function() {
+	return this.each(function() {
 
-			var img = this,
-			$img = $(this),
-			width = $img.attr('width'),
-			height = $img.attr('height');
+		var img = this,
+		$img = $(this),
+		width = $img.attr('width'),
+		height = $img.attr('height');
 
-			// Optimised to call run when the width and height attributes are set, rather than wait for the image to load
-			if (width === undefined || height === undefined) {
-				// Added image already loaded condition to account for an issue encoutered with IE 11 where runonce was not called
-				// However, $img[0].complete caused Firefox 35 to fallback to a default image height for the same test page, so added setTimeout 0 to fix, which
-				// feels very hacky but worked
-				if ($img[0].complete || $img[0].readyState === 4) {
-					setTimeout(function() {
-						runonce.call(img);
-					},0);
-				}
-				else {
-					$img.on('load', function() {
-						runonce.call(this);
-					});
-				}
+		// Imagefill will take advantage of set image width and height attributes; otherwise it waits for the image to load first
+		// The following detects whether the width and height attributes are set. When not set a fallback is used.
+		if (width === undefined || height === undefined) {
+			// Added image already loaded condition to account for an issue encoutered with IE 11 where runonce was not called
+			if (img.complete || img.readyState === 4) {
+				runonce.call(img);
 			}
 			else {
-				$img.data(imagefill_image_ratio_str, width / height);
-				runonce.call(this);
+				// There was an issue here where in certain circumstances Firefox 35 wasn't showing the correct image height
+				$img.on('load', function() {
+					runonce.call(img);
+				});
 			}
-			// There may be caveats
-			// http://stackoverflow.com/questions/10403983/cross-browser-image-onload-event-handling
+		}
+		else {
+			$img.data(imagefill_image_ratio_str, width / height);
+			runonce.call(this);
+		}
+		// There may be caveats
+		// http://stackoverflow.com/questions/10403983/cross-browser-image-onload-event-handling
 
-		});
+	});
 
-	};
+};
 
-	// Prevent unnecessary calls to run
-	runBuffer = function() {
-		clearTimeout(tid);
-		tid = setTimeout(function() {
-			$collection.each(run);
-		}, delay);
-	};
+// Prevent unnecessary calls to run
+runBuffer = function() {
+	clearTimeout(tid);
+	tid = setTimeout(function() {
+		$collection.each(run);
+	}, delay);
+};
 
-	$(window).on('resize', runBuffer);
+$(window).on('resize', runBuffer);
 
 
 }(jQuery));
