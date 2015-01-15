@@ -1,5 +1,4 @@
 /* imagefill v2.2.1 https://github.com/davesmiths/imagefill */
-window.console = window.console || {log: function() {}};
 (function($) {
 
 	'use strict';

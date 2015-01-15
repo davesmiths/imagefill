@@ -121,4 +121,11 @@ JavaScript
 $('.thing').imagefill({className:'wop'});
 ```
 
+
+##Trouble-shooting
+Imagefill works best when the image or video dimensions are provided. First check whether you can add width and height attributes. Otherwise drop a line in the issues and I'll see what can be done.
+
+
+* * *
+
 Created 2013 November 26
